@@ -1,0 +1,1 @@
+select * from {{source ('staging','credit_card_balance')}}

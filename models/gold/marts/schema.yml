@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: gold_loan_risk_mart
+    description: "The final risk table for Power BI. One row per customer."
+    columns:
+      - name: current_app_id
+        description: "Primary Key. Unique ID for the loan application."
+        tests:
+          - unique   # CRITICAL: Ensures no duplicates (Fan-out check)
+          - not_null # CRITICAL: We cannot have a loan without an ID
+
+      - name: contract_type
+        tests:
+          - accepted_values:
+              values: ['Cash loans', 'Revolving loans'] # Data Integrity Check
+
+      - name: total_income
+        tests:
+          - not_null
+
+      - name: credit_to_income_ratio
+        description: "Calculated metric: Loan Amount / Total Income"
+        tests:
+          - not_null
+
+      - name: total_active_loans
+        description: "From Silver Bureau. Coalesced to 0 if null."
+        tests:
+          - not_null # If this fails, our Gold Logic (Coalesce) is broken

@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: bronze_application_test
+    config:
+      materialized: table
+
+  - name: bronze_application_train
+    config:
+      materialized: table
+
+  - name: bronze_bureau
+    config:
+      materialized: table
+
+  - name: bronze_bureau_balance
+    config:
+      materialized: table
+
+  - name: bronze_credit_card_balance
+    config:
+      materialized: table
+
+  - name: bronze_installments_payments
+    config:
+      materialized: table
+
+  - name: bronze_pos_cash_balance
+    config:
+      materialized: table
+
+  - name: bronze_previous_application
+    config:
+      materialized: table
+
+
+#use this only if there's specific requirement only like 
+#one view and remaining tables form!

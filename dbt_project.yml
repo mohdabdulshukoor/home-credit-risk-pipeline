@@ -1,0 +1,33 @@
+
+name: 'snowdbt_homecredit_project'
+version: '1.0.0'
+
+profile: 'snowdbt_homecredit_project'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:        
+  - "target"
+  - "dbt_packages"
+
+models:
+  snowdbt_homecredit_project:
+    # This applies to models/bronze/
+    bronze:
+      +materialized: table
+      +schema: bronze
+
+    # This applies to models/silver/
+    silver:
+      +materialized: incremental
+      +schema: silver
+
+    # This applies to models/marts/ (or models/gold/)
+    marts:
+      +materialized: table
+      +schema: gold

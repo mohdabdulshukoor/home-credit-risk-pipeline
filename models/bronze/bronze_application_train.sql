@@ -1,0 +1,1 @@
+select * from {{source ('staging','application_train')}}

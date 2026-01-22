@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: staging             # Matches {{ source('staging', ...) }}
+    database: HOMECREDIT_DB   # Your DB
+    schema: staging           # Your Raw Schema
+    tables:
+      # These are the ORIGINAL filenames from Kaggle (Raw Data)
+      - name: application_train
+      - name: application_test
+      - name: bureau
+      - name: bureau_balance
+      - name: credit_card_balance
+      - name: installments_payments      
+      - name: pos_cash_balance
+      - name: previous_application
